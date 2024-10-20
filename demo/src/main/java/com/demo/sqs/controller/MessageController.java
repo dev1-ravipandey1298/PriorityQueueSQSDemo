@@ -1,9 +1,8 @@
 package com.demo.sqs.controller;
 
 import com.demo.sqs.dto.Message;
-import com.demo.sqs.publisher.Publisher;
-import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import com.demo.sqs.publisher.SqsMessagePublisherService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +19,9 @@ public class MessageController {
 
     @Value("${aws.priorityQueueName}")
     private String priorityQueueName;
-    private final Publisher publisher;
+    private final SqsMessagePublisherService publisher;
 
-    public MessageController(Publisher publisher){
+    public MessageController(SqsMessagePublisherService publisher){
         this.publisher = publisher;
     }
 
